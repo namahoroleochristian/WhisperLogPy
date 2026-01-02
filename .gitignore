@@ -1,0 +1,7 @@
+# Logs & generated files
+*.txt
+*.wav
+
+# OS files
+.DS_Store
+Thumbs.db
