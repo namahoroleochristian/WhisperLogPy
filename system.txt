@@ -1,0 +1,6 @@
+Processor: Intel64 Family 6 Model 78 Stepping 3, GenuineIntel
+System: Windows 10.0.19045
+Machine: AMD64
+Hostname: LEO
+Internal IP: 192.168.220.1
+External IP: 105.178.119.196
